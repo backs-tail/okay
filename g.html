@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rite.io/title</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire container */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(139, 0, 0, 0.9);
+            z-index: -1;
+            animation: fadeInOut 30s infinite alternate;
+            opacity: 0.5; /* Adjust opacity for texture */
+            background-image: url('texture.png'); /* Add texture image */
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .content {
+            display: block;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            text-align: left;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgba(139, 0, 0, 0.9); /* Darker deep red background for the block */
+            padding: 20px; /* Add padding to the block */
+            border-radius: 10px; /* Add border radius for rounded corners */
+            animation: fadeIn 4s forwards; /* Slower fade in animation */
+        }
+
+        h1 {
+            font-size: 15em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            color: white; /* Set heading text color to white */
+        }
+         
+        p {
+            font-size: 1em;
+            margin: 0;
+            padding: 0;
+            color: rgba(228, 226, 226, 0.209); /* Set subheading text color to white */
+        }
+
+        .content.fadeIn {
+            display: none;
+            animation: fadeIn 4s forwards;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .icon-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            opacity: 0; /* Initially hidden */
+            animation: fadeInIcon 300s forwards; /* Fade in animation */
+            z-index: 100; /* Ensure it's above other elements */
+        }
+
+        @keyframes fadeInIcon {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .icon-container img {
+            width: 50px; /* Adjust size as needed */
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div> <!-- Add particles container -->
+    
+    <div class="video-container">
+        <video autoplay loop id="video-background">
+            <source src="video3.mp4" type="video/mp4">
+            <source src="video2.mp4" type="video/mp4"> <!-- Add video2 source -->
+            <source src="video1.mp4" type="video/mp4"> <!-- Add video3 source -->
+            <source src="video4.mp4" type="video/mp4"> <!-- Add video4 source -->
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div> <!-- Add overlay for blur effect -->
+    </div>
+
+    <div class="content" id="fadeContent">
+        <h1>rite.io</h1>
+        <p>simon@rite.io</p>
+    </div>
+
+    <div class="content fadeIn" id="secondContent">
+        <h1>digital. simon@rite.io</h1>
+    </div>
+
+    <!-- Icon container -->
+    <div class="icon-container">
+        <a href="https://example.com">
+            <img src="icon.png" alt="Icon">
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</body>
+</html>
